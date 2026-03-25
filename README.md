@@ -8,7 +8,6 @@ It provides a clean and interactive interface to monitor transaction data and de
 
 ## Live Demo
 - GitHub Pages: https://amantanwar007.github.io/BackHackers_AI/
-- Vercel: https://fraudshield-ai-dashboard-hi5g6821d-amantanwar007s-projects.vercel.app
 
 ---
 
