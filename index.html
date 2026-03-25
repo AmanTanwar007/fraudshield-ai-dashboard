@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BackHackers AI — Fraud Detection Platform</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+     ══════════════════════════════════════════ -->
+<nav>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    BackHackers AI
+  </div>
+
+  <ul class="nav-links">
+    <li><a href="#">Platform</a></li>
+    <li><a href="#">Models</a></li>
+    <li><a href="#">API</a></li>
+    <li><a href="#">Docs</a></li>
+    <li><a href="#">Pricing</a></li>
+  </ul>
+
+  <button class="nav-cta">Get Started →</button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     HERO
+     ══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span></span> Real-time AI Fraud Detection
+    </div>
+
+    <h1 class="hero-title">
+      Stop Fraud<br><em>Before It Happens</em>
+    </h1>
+
+    <p class="hero-sub">
+      BackHackers AI uses ensemble machine learning models to detect fraudulent
+      transactions with 99.7% accuracy — in under 80ms.
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn-primary">Start Free Trial</button>
+      <button class="btn-ghost">View Live Demo</button>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STATS BAR
+     ══════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-num">99.7%</div>
+    <div class="stat-label">Detection Accuracy</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">&lt;80ms</div>
+    <div class="stat-label">Avg Response Time</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">₹2.4B</div>
+    <div class="stat-label">Fraud Prevented YTD</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">340M+</div>
+    <div class="stat-label">Transactions Analyzed</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LIVE TICKER
+     ══════════════════════════════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,540 · Card Cloning <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹234.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,900 · Account Takeover <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · ₹47.50 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88425 <span>REVIEW</span> · ₹3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · ₹890.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · ₹22,100 · Velocity Breach <div class="tick-sep">|</div></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,540 · Card Cloning <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹234.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,900 · Account Takeover <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · ₹47.50 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88425 <span>REVIEW</span> · ₹3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · ₹890.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · ₹22,100 · Velocity Breach <div class="tick-sep">|</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     LIVE DASHBOARD
+     ══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-label">Live Intelligence</div>
+  <h2 class="section-title">Real-Time<br>Risk Dashboard</h2>
+  <p class="section-sub">
+    Monitor every transaction as it flows through our detection engine —
+    block fraud before funds move.
+  </p>
+
+  <div class="dashboard-grid">
+
+    <!-- Fraud Blocked Today -->
+    <div class="dash-card">
+      <div class="card-label">Fraud Blocked Today</div>
+      <div class="card-value danger" id="fraud-count">1,247</div>
+      <div class="card-delta delta-up">↑ 3.2% vs yesterday</div>
+      <div class="mini-chart" id="fraud-chart"></div>
+    </div>
+
+    <!-- Safe Transactions -->
+    <div class="dash-card">
+      <div class="card-label">Safe Transactions</div>
+      <div class="card-value safe" id="safe-count">98,341</div>
+      <div class="card-delta delta-down">↑ 1.8% volume</div>
+      <div class="mini-chart" id="safe-chart"></div>
+    </div>
+
+    <!-- Risk Gauge + TX Feed -->
+    <div class="dash-card tall">
+      <div class="card-label">Current Network Risk</div>
+      <div class="gauge-wrap">
+        <svg class="gauge-arc" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M 20 100 A 80 80 0 0 1 180 100"
+                stroke="rgba(255,255,255,0.06)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 20 100 A 80 80 0 0 1 180 100"
+                stroke="url(#rg)" stroke-width="14" stroke-linecap="round"
+                stroke-dasharray="251" stroke-dashoffset="80" id="gauge-path"
+                style="transition: stroke-dashoffset 1.5s cubic-bezier(0.34,1.56,0.64,1)"/>
+          <defs>
+            <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#00e8a2"/>
+              <stop offset="100%" stop-color="#ff4d6d"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="gauge-label">68</div>
+        <div class="gauge-sub">/ 100 — ELEVATED</div>
+      </div>
+      <div class="tx-feed" id="live-feed"></div>
+    </div>
+
+    <!-- 24-hour Volume Chart -->
+    <div class="dash-card wide">
+      <div class="card-label">Transaction Volume — Last 24h</div>
+      <div class="mini-chart" id="volume-chart" style="height:80px"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FEATURES
+     ══════════════════════════════════════════ -->
+<section class="section features-section">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Built for Every<br>Attack Vector</h2>
+
+  <div class="features-grid">
+
+    <div class="feat-card">
+      <div class="feat-icon">🧠</div>
+      <div class="feat-title">Ensemble ML Models</div>
+      <p class="feat-desc">
+        XGBoost, LightGBM, and deep neural networks work in parallel — each
+        model votes, a meta-learner decides.
+      </p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Sub-100ms Scoring</div>
+      <p class="feat-desc">
+        Redis-cached feature stores and vectorized inference pipelines deliver
+        decisions before users notice latency.
+      </p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon">🔍</div>
+      <div class="feat-title">Explainable AI (XAI)</div>
+      <p class="feat-desc">
+        SHAP values and LIME explanations surface every signal — your
+        compliance team will love the audit trail.
+      </p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon">🌐</div>
+      <div class="feat-title">Graph Neural Networks</div>
+      <p class="feat-desc">
+        Map relationships between accounts, devices, and IPs to uncover fraud
+        rings that rule-based systems miss entirely.
+      </p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon">🔄</div>
+      <div class="feat-title">Adaptive Learning</div>
+      <p class="feat-desc">
+        Continuous online learning with concept drift detection automatically
+        adjusts models as fraud patterns evolve.
+      </p>
+    </div>
+
+    <div class="feat-card">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">Zero-Day Defense</div>
+      <p class="feat-desc">
+        Anomaly detection with autoencoders catches novel attack patterns that
+        have never been seen in training data.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ML PIPELINE
+     ══════════════════════════════════════════ -->
+<section class="pipeline-section">
+  <div class="section-label">Architecture</div>
+  <h2 class="section-title">How Our ML<br>Pipeline Works</h2>
+
+  <div class="pipeline-wrap">
+    <div class="pipeline-track">
+
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <div class="pipe-icon">📥</div>
+        <div class="pipe-title">Ingest</div>
+        <p class="pipe-desc">Transaction event streams via Kafka. 340M+ events/day ingested with sub-5ms p99 latency.</p>
+      </div>
+
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <div class="pipe-icon">⚙️</div>
+        <div class="pipe-title">Feature Eng.</div>
+        <p class="pipe-desc">200+ real-time features: velocity, geo-distance, device fingerprint, behavioral biometrics.</p>
+      </div>
+
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <div class="pipe-icon">🧬</div>
+        <div class="pipe-title">Scoring</div>
+        <p class="pipe-desc">7-model ensemble with gradient boosting, LSTM sequences, and GNN embeddings in parallel.</p>
+      </div>
+
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <div class="pipe-icon">🏛️</div>
+        <div class="pipe-title">Meta-Learner</div>
+        <p class="pipe-desc">Stacked generalization layer combines model outputs into a single calibrated risk probability.</p>
+      </div>
+
+      <div class="pipe-step">
+        <div class="pipe-num">05</div>
+        <div class="pipe-icon">⚖️</div>
+        <div class="pipe-title">Decision</div>
+        <p class="pipe-desc">Block / Review / Allow with configurable thresholds. Full SHAP explanation logged per decision.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INTERACTIVE ANALYZER
+     ══════════════════════════════════════════ -->
+<section class="analyzer-section">
+  <div class="section-label">Try It Live</div>
+  <h2 class="section-title">Analyze a<br>Transaction</h2>
+  <p class="section-sub">
+    Enter transaction details below and watch the ML engine evaluate risk in real time.
+  </p>
+
+  <div class="analyzer-wrap">
+
+    <!-- Input Panel -->
+    <div class="input-panel">
+      <div class="panel-title">
+        <div class="panel-title-dot"></div> Transaction Input
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <div class="field-label">Amount (USD)</div>
+          <input class="field-input" id="tx-amount" type="number" placeholder="e.g. 4850" />
+        </div>
+        <div class="field-group">
+          <div class="field-label">Transaction Type</div>
+          <select class="field-select" id="tx-type">
+            <option>Online Purchase</option>
+            <option>Wire Transfer</option>
+            <option>ATM Withdrawal</option>
+            <option>POS Payment</option>
+            <option>Crypto Exchange</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <div class="field-label">Country</div>
+          <select class="field-select" id="tx-country">
+            <option>United States</option>
+            <option>Nigeria</option>
+            <option>Russia</option>
+            <option>United Kingdom</option>
+            <option>India</option>
+            <option>Brazil</option>
+            <option>China</option>
+            <option>Germany</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <div class="field-label">Hour of Day (0–23)</div>
+          <input class="field-input" id="tx-hour" type="number" min="0" max="23" placeholder="e.g. 14" />
+        </div>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">Device Risk Level</div>
+        <select class="field-select" id="tx-device">
+          <option>New Device</option>
+          <option>Trusted Device</option>
+          <option>Flagged Device</option>
+          <option>VPN / Proxy</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <div class="field-label">User Velocity (txns last hour)</div>
+        <input class="field-input" id="tx-velocity" type="number" placeholder="e.g. 3" />
+      </div>
+
+      <button class="analyze-btn" onclick="analyzeTransaction()">
+        ⚡ Run Fraud Analysis
+      </button>
+    </div>
+
+    <!-- Output Panel -->
+    <div class="output-panel">
+      <div class="panel-title">
+        <div class="panel-title-dot" style="background:var(--accent2)"></div>
+        Risk Assessment
+      </div>
+
+      <!-- Idle state -->
+      <div class="result-idle" id="result-idle">
+        <div class="result-idle-icon">🔬</div>
+        <div>Fill in transaction details<br>and run analysis</div>
+      </div>
+
+      <!-- Results -->
+      <div class="result-display" id="result-display">
+        <div class="risk-score-big" id="risk-score-display">—</div>
+        <div class="risk-label">RISK SCORE (0–100)</div>
+        <div class="risk-bar-track">
+          <div class="risk-bar-fill" id="risk-bar"></div>
+        </div>
+        <div id="risk-verdict" style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:20px;"></div>
+        <ul class="signals-list" id="signals-list"></ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     TESTIMONIALS
+     ══════════════════════════════════════════ -->
+<section class="testimonials">
+  <div class="section-label">Social Proof</div>
+  <h2 class="section-title">Trusted by Risk Teams<br>Worldwide</h2>
+
+  <div class="testi-grid">
+
+    <div class="testi-card">
+      <div class="testi-quote">
+        BackHackers AI cut our false positive rate by 62% in the first month.
+        Our customers stopped getting their cards declined for legitimate purchases.
+      </div>
+      <div class="testi-author">
+        <div class="author-avatar">SR</div>
+        <div>
+          <div class="author-name">Sarah Reynolds</div>
+          <div class="author-role">VP Risk, Meridian Bank</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-quote">
+        The graph neural network feature alone uncovered a fraud ring we'd been
+        missing for 8 months. The ROI was immediate and staggering.
+      </div>
+      <div class="testi-author">
+        <div class="author-avatar">KP</div>
+        <div>
+          <div class="author-name">Karan Patel</div>
+          <div class="author-role">Head of Fraud, FinFlux</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="testi-quote">
+        The explainability reports are exactly what our regulators asked for.
+        We can justify every single block decision with a clear audit trail.
+      </div>
+      <div class="testi-author">
+        <div class="author-avatar">ML</div>
+        <div>
+          <div class="author-name">Marie Laurent</div>
+          <div class="author-role">Compliance Director, EuroPay</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     PRICING
+     ══════════════════════════════════════════ -->
+<section class="pricing">
+  <div class="section-label">Pricing</div>
+  <h2 class="section-title">Transparent,<br>Usage-Based Pricing</h2>
+
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-amt">₹499</div>
+      <div class="price-per">/ month · up to 1M transactions</div>
+      <ul class="price-features">
+        <li class="pf-item">Core XGBoost + LightGBM models</li>
+        <li class="pf-item">Real-time scoring API</li>
+        <li class="pf-item">Basic dashboard</li>
+        <li class="pf-item">Email alerts</li>
+        <li class="pf-item">Community support</li>
+      </ul>
+      <button class="price-btn outline">Get Started</button>
+    </div>
+
+    <div class="price-card featured">
+      <div class="featured-badge">POPULAR</div>
+      <div class="price-tier">Growth</div>
+      <div class="price-amt">₹1,899</div>
+      <div class="price-per">/ month · up to 10M transactions</div>
+      <ul class="price-features">
+        <li class="pf-item">Full 7-model ensemble</li>
+        <li class="pf-item">Graph Neural Network module</li>
+        <li class="pf-item">SHAP explainability reports</li>
+        <li class="pf-item">Adaptive learning</li>
+        <li class="pf-item">Slack + webhook alerts</li>
+        <li class="pf-item">Priority support</li>
+      </ul>
+      <button class="price-btn solid">Start Free Trial</button>
+    </div>
+
+    <div class="price-card">
+      <div class="price-tier">Enterprise</div>
+      <div class="price-amt">Custom</div>
+      <div class="price-per">unlimited transactions</div>
+      <ul class="price-features">
+        <li class="pf-item">Custom model fine-tuning</li>
+        <li class="pf-item">On-premise deployment</li>
+        <li class="pf-item">SLA &lt;80ms p99</li>
+        <li class="pf-item">Dedicated ML engineer</li>
+        <li class="pf-item">SOC 2 Type II + PCI DSS</li>
+        <li class="pf-item">24/7 support</li>
+      </ul>
+      <button class="price-btn outline">Contact Sales</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+     ══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">BackHackers AI</div>
+    <p class="footer-desc">
+      Real-time fraud detection powered by ensemble machine learning.
+      Protecting ₹2.4B in transactions daily.
+    </p>
+  </div>
+
+  <div class="footer-col">
+    <h4>Platform</h4>
+    <ul>
+      <li><a href="#">Fraud Detection</a></li>
+      <li><a href="#">Risk Scoring</a></li>
+      <li><a href="#">Graph Analytics</a></li>
+      <li><a href="#">XAI Reports</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h4>Developers</h4>
+    <ul>
+      <li><a href="#">API Reference</a></li>
+      <li><a href="#">SDKs</a></li>
+      <li><a href="#">Webhooks</a></li>
+      <li><a href="#">Status Page</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-col">
+    <h4>Company</h4>
+    <ul>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Careers</a></li>
+      <li><a href="#">Security</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="footer-bottom">
+  <span>© 2026 BackHackers AI, Inc. All rights reserved.</span>
+  <span>Privacy · Terms · Cookies</span>
+</div>
+
+<!-- JavaScript (loaded last for performance) -->
+<script src="main.js"></script>
+
+</body>
+</html>
