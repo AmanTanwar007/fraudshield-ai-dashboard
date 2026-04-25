@@ -1,0 +1,340 @@
+{
+  "info": {
+    "name": "BackHackers AI API",
+    "description": "Complete REST API for the BackHackers AI fraud detection platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000", "type": "string" },
+    { "key": "token",   "value": "",                      "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "GET /api/health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/health"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "POST Register",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/auth/register",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Aman Tanwar\",\n  \"email\": \"aman@example.com\",\n  \"password\": \"SecurePass1\",\n  \"role\": \"analyst\"\n}"
+            }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 201) {",
+                "  pm.collectionVariables.set('token', pm.response.json().data.token);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "POST Login",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/auth/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@backhackers.ai\",\n  \"password\": \"Admin@1234\"\n}"
+            }
+          },
+          "event": [{
+            "listen": "test",
+            "script": {
+              "exec": [
+                "if (pm.response.code === 200) {",
+                "  pm.collectionVariables.set('token', pm.response.json().data.token);",
+                "}"
+              ]
+            }
+          }]
+        },
+        {
+          "name": "GET Me",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/auth/me",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "POST Analyze (Public)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/transactions/analyze",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 4850,\n  \"transactionType\": \"wire_transfer\",\n  \"country\": \"Nigeria\",\n  \"hourOfDay\": 3,\n  \"deviceRisk\": \"vpn_proxy\",\n  \"velocity\": 5\n}"
+            }
+          }
+        },
+        {
+          "name": "POST Create (Protected)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/transactions",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amount\": 1200,\n  \"transactionType\": \"online_purchase\",\n  \"country\": \"United States\",\n  \"hourOfDay\": 14,\n  \"deviceRisk\": \"trusted\",\n  \"velocity\": 1,\n  \"merchantId\": \"Amazon\"\n}"
+            }
+          }
+        },
+        {
+          "name": "GET List (filters)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/transactions?verdict=block&minScore=70&page=1&limit=10",
+              "query": [
+                { "key": "verdict",  "value": "block" },
+                { "key": "minScore", "value": "70" },
+                { "key": "page",     "value": "1" },
+                { "key": "limit",    "value": "10" }
+              ]
+            },
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Single by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/transactions/:id",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "PATCH Review",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/transactions/:id/review",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"resolved\",\n  \"reviewNotes\": \"Confirmed fraud. Card blocked and customer notified.\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "GET Stats",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dashboard/stats",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Ticker",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dashboard/ticker",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET System Health",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/dashboard/health",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alerts",
+      "item": [
+        {
+          "name": "GET Alerts List",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/alerts?severity=critical&isResolved=false",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Unread Count",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/alerts/unread-count",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "PATCH Mark Read",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/alerts/:id/read",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "PATCH Mark All Read",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/alerts/read-all",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "PATCH Resolve Alert",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/alerts/:id/resolve",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "item": [
+        {
+          "name": "GET Overview (30d)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/overview?days=30",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Risk Distribution",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/risk-distribution",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Country Heatmap",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/country-heatmap?days=30",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Daily Trend (14d)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/trend?days=14",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Device Breakdown",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/device-breakdown",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Type Breakdown",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/type-breakdown",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Top Signals",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/top-signals",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET Audit Logs (admin)",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/analytics/audit-logs?page=1&limit=50",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users (Admin)",
+      "item": [
+        {
+          "name": "GET All Users",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "PATCH Update User",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/users/:id",
+            "header": [
+              { "key": "Content-Type",  "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{ \"role\": \"analyst\", \"isActive\": true }"
+            }
+          }
+        },
+        {
+          "name": "DELETE Deactivate User",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/users/:id",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        },
+        {
+          "name": "GET User Audit Logs",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/users/:id/audit-logs",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }]
+          }
+        }
+      ]
+    }
+  ]
+}
