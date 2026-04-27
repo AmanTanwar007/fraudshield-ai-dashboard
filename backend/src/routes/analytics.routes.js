@@ -1,34 +1,13 @@
 'use strict';
-
-const express = require('express');
-const router  = express.Router();
-const analyticsController = require('../controllers/analytics.controller');
-const { protect, restrict } = require('../middleware/auth.middleware');
-
-router.use(protect);
-
-// GET /api/analytics/overview         — top-level KPIs
-router.get('/overview', analyticsController.overview);
-
-// GET /api/analytics/risk-distribution — score histogram
-router.get('/risk-distribution', analyticsController.riskDistribution);
-
-// GET /api/analytics/country-heatmap  — fraud by country
-router.get('/country-heatmap', analyticsController.countryHeatmap);
-
-// GET /api/analytics/trend            — daily fraud trend (last N days)
-router.get('/trend', analyticsController.trend);
-
-// GET /api/analytics/device-breakdown — device risk breakdown
-router.get('/device-breakdown', analyticsController.deviceBreakdown);
-
-// GET /api/analytics/type-breakdown   — fraud by transaction type
-router.get('/type-breakdown', analyticsController.typeBreakdown);
-
-// GET /api/analytics/top-signals      — most common fraud signals
-router.get('/top-signals', analyticsController.topSignals);
-
-// GET /api/analytics/audit-logs  (admin)
-router.get('/audit-logs', restrict('admin'), analyticsController.auditLogs);
-
-module.exports = router;
+const r = require('express').Router();
+const c = require('../controllers/analytics.controller');
+const { protect } = require('../middleware/auth.middleware');
+r.use(protect);
+r.get('/overview',          c.overview);
+r.get('/trend',             c.trend);
+r.get('/country-heatmap',   c.countryHeatmap);
+r.get('/device-breakdown',  c.deviceBreakdown);
+r.get('/type-breakdown',    c.typeBreakdown);
+r.get('/top-signals',       c.topSignals);
+r.get('/risk-distribution', c.riskDistribution);
+module.exports = r;

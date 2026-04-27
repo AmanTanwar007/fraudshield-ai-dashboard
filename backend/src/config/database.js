@@ -1,7 +1,7 @@
 'use strict';
 
+require('dotenv').config();
 const { Sequelize } = require('sequelize');
-const logger = require('../utils/logger');
 
 const sequelize = new Sequelize(
   process.env.DB_NAME     || 'neondb',
@@ -11,11 +11,11 @@ const sequelize = new Sequelize(
     host:    process.env.DB_HOST || 'localhost',
     port:    parseInt(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
-    logging: (sql) => logger.debug(sql),
+    logging: false,
     pool: {
-      max:     10,
+      max:     5,
       min:     0,
-      acquire: 30000,
+      acquire: 60000,
       idle:    10000,
     },
     dialectOptions: {
@@ -23,6 +23,7 @@ const sequelize = new Sequelize(
         require:            true,
         rejectUnauthorized: false,
       },
+      connectTimeout: 60000,
     },
   }
 );

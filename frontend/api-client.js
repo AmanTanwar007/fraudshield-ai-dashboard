@@ -14,7 +14,7 @@
 'use strict';
 
 // ── Config ────────────────────────────────────────────────
-const BACKEND_URL = 'https://backhackers-ai-backend.vercel.app'; // ← change this
+const BACKEND_URL = 'https://backhackers-ai-backend.vercel.app';
 
 // ── Auth token storage ────────────────────────────────────
 const Auth = {

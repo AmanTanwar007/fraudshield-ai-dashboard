@@ -6,42 +6,41 @@ const bcrypt = require('bcryptjs');
 module.exports = (sequelize) => {
   const User = sequelize.define('User', {
     id: {
-      type: DataTypes.UUID,
+      type:         DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true,
+      primaryKey:   true,
     },
     name: {
-      type: DataTypes.STRING(100),
+      type:      DataTypes.STRING(100),
       allowNull: false,
-      validate: { len: [2, 100] },
     },
     email: {
-      type: DataTypes.STRING(255),
+      type:      DataTypes.STRING(255),
       allowNull: false,
-      unique: true,
-      validate: { isEmail: true },
+      unique:    true,
+      validate:  { isEmail: true },
     },
     password: {
-      type: DataTypes.STRING(255),
+      type:      DataTypes.STRING(255),
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM('admin', 'analyst', 'viewer'),
+      type:         DataTypes.ENUM('admin', 'analyst', 'viewer'),
       defaultValue: 'analyst',
     },
     isActive: {
-      type: DataTypes.BOOLEAN,
+      type:         DataTypes.BOOLEAN,
       defaultValue: true,
     },
     lastLogin: {
       type: DataTypes.DATE,
     },
     loginCount: {
-      type: DataTypes.INTEGER,
+      type:         DataTypes.INTEGER,
       defaultValue: 0,
     },
   }, {
-    tableName: 'users',
+    tableName:  'users',
     timestamps: true,
     hooks: {
       beforeCreate: async (user) => {
@@ -55,15 +54,14 @@ module.exports = (sequelize) => {
     },
   });
 
-  // Instance method: verify password
-  User.prototype.verifyPassword = async function(candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
+  User.prototype.verifyPassword = async function (candidate) {
+    return bcrypt.compare(candidate, this.password);
   };
 
-  // Instance method: safe JSON (strips password)
-  User.prototype.toSafeJSON = function() {
-    const { password, ...safe } = this.toJSON();
-    return safe;
+  User.prototype.toSafeJSON = function () {
+    const obj = this.toJSON();
+    delete obj.password;
+    return obj;
   };
 
   return User;

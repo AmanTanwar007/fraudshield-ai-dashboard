@@ -1,13 +1,12 @@
 {
   "name": "backhackers-ai-backend",
   "version": "1.0.0",
-  "description": "BackHackers AI — Full Node.js/Express backend for the fraud detection platform",
+  "description": "BackHackers AI - Fraud Detection Backend API",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "seed": "node src/utils/seed.js",
-    "test": "jest --forceExit"
+    "seed": "node src/utils/seed.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -27,9 +26,7 @@
     "winston": "^3.11.0"
   },
   "devDependencies": {
-    "jest": "^29.7.0",
-    "nodemon": "^3.0.2",
-    "supertest": "^6.3.3"
+    "nodemon": "^3.0.2"
   },
   "engines": {
     "node": ">=18.0.0"
