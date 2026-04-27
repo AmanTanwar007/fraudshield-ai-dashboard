@@ -7,6 +7,22 @@
       "config": {
         "includeFiles": ["backend/src/**"]
       }
+    },
+    {
+      "src": "frontend/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/styles.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/api-client.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "frontend/main.js",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -25,22 +41,6 @@
     {
       "src": "/main.js",
       "dest": "frontend/main.js"
-    },
-    {
-      "src": "/(.*\\.js)",
-      "dest": "frontend/$1"
-    },
-    {
-      "src": "/(.*\\.css)",
-      "dest": "frontend/$1"
-    },
-    {
-      "src": "/(.*\\.html)",
-      "dest": "frontend/$1"
-    },
-    {
-      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf))",
-      "dest": "frontend/$1"
     },
     {
       "src": "/(.*)",
