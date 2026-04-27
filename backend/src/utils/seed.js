@@ -69,7 +69,7 @@ async function seed() {
     console.log('══════════════════════════════════════\n');
     process.exit(0);
   } catch (err) {
-    console.error('❌  Seed failed:', err.message);
+    console.error('❌  Seed failed:', err);
     process.exit(1);
   }
 }

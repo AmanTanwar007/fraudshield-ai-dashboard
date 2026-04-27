@@ -8,6 +8,11 @@ const PORT = process.env.PORT || 5000;
 
 async function startServer() {
   try {
+    console.log('Connecting to DB...');
+    console.log('Host:', process.env.DB_HOST);
+    console.log('User:', process.env.DB_USER);
+    console.log('Name:', process.env.DB_NAME);
+
     await sequelize.authenticate();
     console.log('✅  Database connected');
 
@@ -16,10 +21,10 @@ async function startServer() {
 
     app.listen(PORT, () => {
       console.log(`🚀  Server running on port ${PORT}`);
-      console.log(`📡  Health: http://localhost:${PORT}/api/health`);
     });
   } catch (err) {
-    console.error('❌  Server failed to start:', err.message);
+    console.error('❌  Server failed:', err.message);
+    console.error('Full error:', err);
     process.exit(1);
   }
 }

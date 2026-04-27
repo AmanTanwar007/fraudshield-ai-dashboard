@@ -8,12 +8,12 @@ const sequelize = new Sequelize(
   process.env.DB_USER     || 'neondb_owner',
   process.env.DB_PASSWORD || '',
   {
-    host:    process.env.DB_HOST || 'localhost',
+    host:    process.env.DB_HOST,
     port:    parseInt(process.env.DB_PORT) || 5432,
     dialect: 'postgres',
     logging: false,
     pool: {
-      max:     5,
+      max:     3,
       min:     0,
       acquire: 60000,
       idle:    10000,
@@ -23,7 +23,6 @@ const sequelize = new Sequelize(
         require:            true,
         rejectUnauthorized: false,
       },
-      connectTimeout: 60000,
     },
   }
 );
