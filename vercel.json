@@ -3,7 +3,10 @@
   "builds": [
     {
       "src": "backend/src/server.js",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["backend/src/**"]
+      }
     }
   ],
   "routes": [
@@ -12,15 +15,36 @@
       "dest": "backend/src/server.js"
     },
     {
-      "src": "/",
+      "src": "/styles.css",
+      "dest": "frontend/styles.css"
+    },
+    {
+      "src": "/api-client.js",
+      "dest": "frontend/api-client.js"
+    },
+    {
+      "src": "/main.js",
+      "dest": "frontend/main.js"
+    },
+    {
+      "src": "/(.*\\.js)",
+      "dest": "frontend/$1"
+    },
+    {
+      "src": "/(.*\\.css)",
+      "dest": "frontend/$1"
+    },
+    {
+      "src": "/(.*\\.html)",
+      "dest": "frontend/$1"
+    },
+    {
+      "src": "/(.*\\.(png|jpg|jpeg|gif|svg|ico|webp|woff|woff2|ttf))",
+      "dest": "frontend/$1"
+    },
+    {
+      "src": "/(.*)",
       "dest": "frontend/index.html"
-    },
-    {
-      "src": "/frontend/(.*)",
-      "dest": "frontend/$1"
-    },
-    {
-      "src": "/(index\\.html|api-client\\.js|main\\.js|styles\\.css)",
-      "dest": "frontend/$1"
     }
   ]
+}
