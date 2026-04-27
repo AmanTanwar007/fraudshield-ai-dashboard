@@ -1,0 +1,10 @@
+{
+  "name": "backhackers-ai",
+  "version": "1.0.0",
+  "scripts": {
+    "vercel-build": "cd backend && npm install"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
