@@ -5,7 +5,8 @@
       "src": "backend/src/server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["backend/src/**"]
+        "includeFiles": ["backend/src/**"],
+        "bundle": false
       }
     },
     {
