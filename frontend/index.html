@@ -26,14 +26,14 @@
   </div>
 
   <ul class="nav-links">
-    <li><a href="#">Platform</a></li>
-    <li><a href="#">Models</a></li>
-    <li><a href="#">API</a></li>
-    <li><a href="#">Docs</a></li>
-    <li><a href="#">Pricing</a></li>
+    <li><a href="#dashboard-section">Platform</a></li>
+    <li><a href="#features">Models</a></li>
+    <li><a href="#pipeline">API</a></li>
+    <li><a href="#analyzer-section">Try It</a></li>
+    <li><a href="#pricing">Pricing</a></li>
   </ul>
 
-  <button class="nav-cta">Get Started →</button>
+  <button class="nav-cta" onclick="showTrialModal()">Get Started →</button>
 </nav>
 
 <!-- ══════════════════════════════════════════
@@ -58,8 +58,8 @@
     </p>
 
     <div class="hero-actions">
-      <button class="btn-primary">Start Free Trial</button>
-      <button class="btn-ghost">View Live Demo</button>
+      <button class="btn-primary" onclick="showTrialModal()">Start Free Trial</button>
+      <button class="btn-ghost"   onclick="showDemoModal()">View Live Demo</button>
     </div>
   </div>
 </section>
@@ -77,7 +77,7 @@
     <div class="stat-label">Avg Response Time</div>
   </div>
   <div class="stat">
-    <div class="stat-num">₹2.4B</div>
+    <div class="stat-num">$2.4B</div>
     <div class="stat-label">Fraud Prevented YTD</div>
   </div>
   <div class="stat">
@@ -91,28 +91,28 @@
      ══════════════════════════════════════════ -->
 <div class="ticker-wrap">
   <div class="ticker">
-    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,540 · Card Cloning <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹234.00 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,900 · Account Takeover <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · ₹47.50 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88425 <span>REVIEW</span> · ₹3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · ₹890.00 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · ₹22,100 · Velocity Breach <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · $12,540 · Card Cloning <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · $234.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · $8,900 · Account Takeover <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · $47.50 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88425 <span>REVIEW</span> · $3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · $890.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · $22,100 · Velocity Breach <div class="tick-sep">|</div></div>
     <!-- Duplicate for seamless loop -->
-    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,540 · Card Cloning <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹234.00 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,900 · Account Takeover <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · ₹47.50 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88425 <span>REVIEW</span> · ₹3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · ₹890.00 <div class="tick-sep">|</div></div>
-    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · ₹22,100 · Velocity Breach <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88421 <span>BLOCKED</span> · $12,540 · Card Cloning <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · $234.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88423 <span>BLOCKED</span> · $8,900 · Account Takeover <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88424 <span style="color:var(--accent)">CLEARED</span> · $47.50 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88425 <span>REVIEW</span> · $3,200 · Unusual Pattern <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · $890.00 <div class="tick-sep">|</div></div>
+    <div class="tick-item">TXN-88427 <span>BLOCKED</span> · $22,100 · Velocity Breach <div class="tick-sep">|</div></div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════
      LIVE DASHBOARD
      ══════════════════════════════════════════ -->
-<section class="section">
+<section class="section" id="dashboard-section">
   <div class="section-label">Live Intelligence</div>
   <h2 class="section-title">Real-Time<br>Risk Dashboard</h2>
   <p class="section-sub">
@@ -174,13 +174,13 @@
 <!-- ══════════════════════════════════════════
      FEATURES
      ══════════════════════════════════════════ -->
-<section class="section features-section">
+<section class="section features-section" id="features">
   <div class="section-label">Capabilities</div>
   <h2 class="section-title">Built for Every<br>Attack Vector</h2>
 
   <div class="features-grid">
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">🧠</div>
       <div class="feat-title">Ensemble ML Models</div>
       <p class="feat-desc">
@@ -189,7 +189,7 @@
       </p>
     </div>
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">⚡</div>
       <div class="feat-title">Sub-100ms Scoring</div>
       <p class="feat-desc">
@@ -198,7 +198,7 @@
       </p>
     </div>
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">🔍</div>
       <div class="feat-title">Explainable AI (XAI)</div>
       <p class="feat-desc">
@@ -207,7 +207,7 @@
       </p>
     </div>
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">🌐</div>
       <div class="feat-title">Graph Neural Networks</div>
       <p class="feat-desc">
@@ -216,7 +216,7 @@
       </p>
     </div>
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">🔄</div>
       <div class="feat-title">Adaptive Learning</div>
       <p class="feat-desc">
@@ -225,7 +225,7 @@
       </p>
     </div>
 
-    <div class="feat-card">
+    <div class="feat-card" onclick="scrollToAnalyzer()" style="cursor:pointer">
       <div class="feat-icon">🛡️</div>
       <div class="feat-title">Zero-Day Defense</div>
       <p class="feat-desc">
@@ -240,7 +240,7 @@
 <!-- ══════════════════════════════════════════
      ML PIPELINE
      ══════════════════════════════════════════ -->
-<section class="pipeline-section">
+<section class="pipeline-section" id="pipeline">
   <div class="section-label">Architecture</div>
   <h2 class="section-title">How Our ML<br>Pipeline Works</h2>
 
@@ -251,7 +251,7 @@
         <div class="pipe-num">01</div>
         <div class="pipe-icon">📥</div>
         <div class="pipe-title">Ingest</div>
-        <p class="pipe-desc">Transaction event streams via Kafka. 340M+ events/day ingested with sub-5ms p99 latency.</p>
+        <p class="pipe-desc">Transaction event streams via Kafka. 340M+ events/day with sub-5ms p99 latency.</p>
       </div>
 
       <div class="pipe-step">
@@ -272,14 +272,14 @@
         <div class="pipe-num">04</div>
         <div class="pipe-icon">🏛️</div>
         <div class="pipe-title">Meta-Learner</div>
-        <p class="pipe-desc">Stacked generalization layer combines model outputs into a single calibrated risk probability.</p>
+        <p class="pipe-desc">Stacked generalization combines model outputs into a single calibrated risk probability.</p>
       </div>
 
       <div class="pipe-step">
         <div class="pipe-num">05</div>
         <div class="pipe-icon">⚖️</div>
         <div class="pipe-title">Decision</div>
-        <p class="pipe-desc">Block / Review / Allow with configurable thresholds. Full SHAP explanation logged per decision.</p>
+        <p class="pipe-desc">Block / Review / Allow with configurable thresholds. Full SHAP explanation per decision.</p>
       </div>
 
     </div>
@@ -289,7 +289,7 @@
 <!-- ══════════════════════════════════════════
      INTERACTIVE ANALYZER
      ══════════════════════════════════════════ -->
-<section class="analyzer-section">
+<section class="analyzer-section" id="analyzer-section">
   <div class="section-label">Try It Live</div>
   <h2 class="section-title">Analyze a<br>Transaction</h2>
   <p class="section-sub">
@@ -392,7 +392,7 @@
 <!-- ══════════════════════════════════════════
      TESTIMONIALS
      ══════════════════════════════════════════ -->
-<section class="testimonials">
+<section class="testimonials" id="testimonials">
   <div class="section-label">Social Proof</div>
   <h2 class="section-title">Trusted by Risk Teams<br>Worldwide</h2>
 
@@ -446,7 +446,7 @@
 <!-- ══════════════════════════════════════════
      PRICING
      ══════════════════════════════════════════ -->
-<section class="pricing">
+<section class="pricing" id="pricing">
   <div class="section-label">Pricing</div>
   <h2 class="section-title">Transparent,<br>Usage-Based Pricing</h2>
 
@@ -454,7 +454,7 @@
 
     <div class="price-card">
       <div class="price-tier">Starter</div>
-      <div class="price-amt">₹499</div>
+      <div class="price-amt">$499</div>
       <div class="price-per">/ month · up to 1M transactions</div>
       <ul class="price-features">
         <li class="pf-item">Core XGBoost + LightGBM models</li>
@@ -463,13 +463,13 @@
         <li class="pf-item">Email alerts</li>
         <li class="pf-item">Community support</li>
       </ul>
-      <button class="price-btn outline">Get Started</button>
+      <button class="price-btn outline" onclick="showContactModal('Starter')">Get Started</button>
     </div>
 
     <div class="price-card featured">
       <div class="featured-badge">POPULAR</div>
       <div class="price-tier">Growth</div>
-      <div class="price-amt">₹1,899</div>
+      <div class="price-amt">$1,899</div>
       <div class="price-per">/ month · up to 10M transactions</div>
       <ul class="price-features">
         <li class="pf-item">Full 7-model ensemble</li>
@@ -479,7 +479,7 @@
         <li class="pf-item">Slack + webhook alerts</li>
         <li class="pf-item">Priority support</li>
       </ul>
-      <button class="price-btn solid">Start Free Trial</button>
+      <button class="price-btn solid" onclick="showTrialModal()">Start Free Trial</button>
     </div>
 
     <div class="price-card">
@@ -494,7 +494,7 @@
         <li class="pf-item">SOC 2 Type II + PCI DSS</li>
         <li class="pf-item">24/7 support</li>
       </ul>
-      <button class="price-btn outline">Contact Sales</button>
+      <button class="price-btn outline" onclick="showContactModal('Enterprise')">Contact Sales</button>
     </div>
 
   </div>
@@ -508,47 +508,53 @@
     <div class="footer-logo">BackHackers AI</div>
     <p class="footer-desc">
       Real-time fraud detection powered by ensemble machine learning.
-      Protecting ₹2.4B in transactions daily.
+      Protecting $2.4B in transactions daily.
     </p>
   </div>
 
   <div class="footer-col">
     <h4>Platform</h4>
     <ul>
-      <li><a href="#">Fraud Detection</a></li>
-      <li><a href="#">Risk Scoring</a></li>
-      <li><a href="#">Graph Analytics</a></li>
-      <li><a href="#">XAI Reports</a></li>
+      <li><a href="#analyzer-section" onclick="scrollToAnalyzer()">Fraud Detection</a></li>
+      <li><a href="#analyzer-section" onclick="scrollToAnalyzer()">Risk Scoring</a></li>
+      <li><a href="#features">Graph Analytics</a></li>
+      <li><a href="#analyzer-section" onclick="scrollToAnalyzer()">XAI Reports</a></li>
     </ul>
   </div>
 
   <div class="footer-col">
     <h4>Developers</h4>
     <ul>
-      <li><a href="#">API Reference</a></li>
-      <li><a href="#">SDKs</a></li>
-      <li><a href="#">Webhooks</a></li>
-      <li><a href="#">Status Page</a></li>
+      <li><a href="https://back-hackers-ai.vercel.app/api/health" target="_blank">API Reference</a></li>
+      <li><a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank">GitHub</a></li>
+      <li><a href="#" onclick="showSuccessToast('Webhooks docs coming soon!')">Webhooks</a></li>
+      <li><a href="https://back-hackers-ai.vercel.app/api/health" target="_blank">Status Page</a></li>
     </ul>
   </div>
 
   <div class="footer-col">
     <h4>Company</h4>
     <ul>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Blog</a></li>
-      <li><a href="#">Careers</a></li>
-      <li><a href="#">Security</a></li>
+      <li><a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank">About</a></li>
+      <li><a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank">GitHub</a></li>
+      <li><a href="#" onclick="showContactModal('Enterprise')">Careers</a></li>
+      <li><a href="#" onclick="showSuccessToast('Security page coming soon!')">Security</a></li>
     </ul>
   </div>
 </footer>
 
 <div class="footer-bottom">
-  <span>© 2026 BackHackers AI, Inc. All rights reserved.</span>
-  <span>Privacy · Terms · Cookies</span>
+  <span>© 2026 BackHackers AI — Aman Tanwar. All rights reserved.</span>
+  <span>
+    <a href="#" onclick="showSuccessToast('Privacy policy coming soon!')" style="color:inherit;text-decoration:none;">Privacy</a>
+    ·
+    <a href="#" onclick="showSuccessToast('Terms coming soon!')" style="color:inherit;text-decoration:none;">Terms</a>
+    ·
+    <a href="#" onclick="showSuccessToast('Cookie policy coming soon!')" style="color:inherit;text-decoration:none;">Cookies</a>
+  </span>
 </div>
 
-<!-- JavaScript (loaded last for performance) -->
+<!-- ── Load api-client.js ONLY (main.js removed) ── -->
 <script src="api-client.js"></script>
 
 </body>
