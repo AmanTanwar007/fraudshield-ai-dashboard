@@ -6,42 +6,26 @@
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/index.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "frontend/styles.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "frontend/api-client.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "frontend/main.js",
+      "src": "frontend/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/src/server.js"
+      "dest": "backend/src/server.js"
     },
     {
-      "src": "/styles.css",
-      "dest": "/frontend/styles.css"
+      "src": "/frontend/(.*)",
+      "dest": "frontend/$1"
     },
     {
-      "src": "/api-client.js",
-      "dest": "/frontend/api-client.js"
-    },
-    {
-      "src": "/main.js",
-      "dest": "/frontend/main.js"
+      "src": "/(.*\\.(js|css|html|png|jpg|ico|svg|woff|woff2|ttf))",
+      "dest": "frontend/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/index.html"
+      "dest": "frontend/index.html"
     }
   ]
 }

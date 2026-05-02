@@ -794,3 +794,24 @@ footer {
   .kpi-grid { grid-template-columns:1fr; }
   .qs-btns { flex-direction:column; }
 }
+
+/* ── Counter flash animation (fires after each analysis) ── */
+@keyframes countFlash {
+  0%   { transform:scale(1);   color:inherit; }
+  30%  { transform:scale(1.18); color:var(--accent); }
+  100% { transform:scale(1);   color:inherit; }
+}
+
+/* ── Log row highlight when new entry added ── */
+.log-new {
+  animation:logNewFlash 2s ease;
+}
+@keyframes logNewFlash {
+  0%   { background:rgba(0,232,162,0.18); }
+  100% { background:transparent; }
+}
+
+/* ── Logs section title flash ── */
+.txn-logs-section .section-title {
+  transition:color 0.4s ease;
+}
