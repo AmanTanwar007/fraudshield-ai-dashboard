@@ -1,88 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BackHackers AI — Fraud Detection Platform</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════
-     NAVIGATION
-     ══════════════════════════════════════════ -->
+<!-- NAV -->
 <nav>
   <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <div class="logo-dot"></div>
-    BackHackers AI
+    <div class="logo-dot"></div>BackHackers AI
   </div>
-
   <ul class="nav-links">
-    <li><a href="#dashboard-section">Platform</a></li>
-    <li><a href="#features">Models</a></li>
-    <li><a href="#pipeline">Architecture</a></li>
-    <li><a href="#analyzer-section">Try It</a></li>
+    <li><a href="#dashboard-section">Dashboard</a></li>
+    <li><a href="#analytics-section">Analytics</a></li>
+    <li><a href="#txn-logs-section">Logs</a></li>
+    <li><a href="#analyzer-section">Analyzer</a></li>
     <li><a href="#pricing">Pricing</a></li>
   </ul>
-
   <button class="nav-cta" onclick="showTrialModal()">Get Started →</button>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     HERO
-     ══════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge">
-      <span></span> Real-time AI Fraud Detection
-    </div>
-    <h1 class="hero-title">
-      Stop Fraud<br><em>Before It Happens</em>
-    </h1>
-    <p class="hero-sub">
-      BackHackers AI uses ensemble machine learning models to detect fraudulent
-      transactions with 99.7% accuracy — in under 80ms.
-    </p>
+    <div class="hero-badge"><span></span> Real-time AI Fraud Detection</div>
+    <h1 class="hero-title">Stop Fraud<br><em>Before It Happens</em></h1>
+    <p class="hero-sub">BackHackers AI uses ensemble ML models to detect fraudulent transactions with 99.7% accuracy — in under 80ms.</p>
     <div class="hero-actions">
       <button class="btn-primary" onclick="showTrialModal()">Start Free Trial</button>
-      <button class="btn-ghost"   onclick="showDemoModal()">View Live Demo</button>
+      <button class="btn-ghost" onclick="showDemoModal()">View Live Demo</button>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     STATS BAR
-     ══════════════════════════════════════════ -->
+<!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat">
-    <div class="stat-num">99.7%</div>
-    <div class="stat-label">Detection Accuracy</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">&lt;80ms</div>
-    <div class="stat-label">Avg Response Time</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">₹240Cr+</div>
-    <div class="stat-label">Fraud Prevented YTD</div>
-  </div>
-  <div class="stat">
-    <div class="stat-num">340M+</div>
-    <div class="stat-label">Transactions Analyzed</div>
-  </div>
+  <div class="stat"><div class="stat-num">99.7%</div><div class="stat-label">Detection Accuracy</div></div>
+  <div class="stat"><div class="stat-num">&lt;80ms</div><div class="stat-label">Avg Response Time</div></div>
+  <div class="stat"><div class="stat-num">₹240Cr+</div><div class="stat-label">Fraud Prevented YTD</div></div>
+  <div class="stat"><div class="stat-num">340M+</div><div class="stat-label">Transactions Analyzed</div></div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     LIVE TICKER
-     ══════════════════════════════════════════ -->
+<!-- TICKER -->
 <div class="ticker-wrap">
-  <div class="ticker">
+  <div class="ticker" id="live-ticker">
     <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,54,000 · Card Cloning <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹23,400 <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,90,000 · Account Takeover <div class="tick-sep">|</div></div>
@@ -90,7 +58,6 @@
     <div class="tick-item">TXN-88425 <span>REVIEW</span> · ₹3,20,000 · Unusual Pattern <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88426 <span style="color:var(--accent)">CLEARED</span> · ₹89,000 <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88427 <span>BLOCKED</span> · ₹22,10,000 · Velocity Breach <div class="tick-sep">|</div></div>
-    <!-- duplicate for seamless loop -->
     <div class="tick-item">TXN-88421 <span>BLOCKED</span> · ₹12,54,000 · Card Cloning <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88422 <span style="color:var(--accent)">CLEARED</span> · ₹23,400 <div class="tick-sep">|</div></div>
     <div class="tick-item">TXN-88423 <span>BLOCKED</span> · ₹8,90,000 · Account Takeover <div class="tick-sep">|</div></div>
@@ -101,191 +68,262 @@
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════
      LIVE DASHBOARD
-     ══════════════════════════════════════════ -->
+     ═══════════════════════════════════ -->
 <section class="section" id="dashboard-section">
   <div class="section-label">Live Intelligence</div>
-  <h2 class="section-title">Real-Time<br>Risk Dashboard</h2>
-  <p class="section-sub">
-    Monitor every transaction as it flows through our detection engine —
-    block fraud before funds move.
-  </p>
+  <h2 class="section-title">Real-Time Risk Dashboard</h2>
+  <p class="section-sub">Monitor every transaction live — block fraud before funds move.</p>
 
-  <div class="dashboard-grid">
+  <!-- KPI Cards -->
+  <div class="kpi-grid">
+    <div class="kpi-card kpi-danger">
+      <div class="kpi-icon">🚫</div>
+      <div class="kpi-body">
+        <div class="kpi-label">Fraud Blocked Today</div>
+        <div class="kpi-value" id="fraud-count">1,247</div>
+        <div class="kpi-delta delta-bad">↑ 3.2% vs yesterday</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-safe">
+      <div class="kpi-icon">✅</div>
+      <div class="kpi-body">
+        <div class="kpi-label">Safe Transactions</div>
+        <div class="kpi-value" id="safe-count">98,341</div>
+        <div class="kpi-delta delta-good">↑ 1.8% volume</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-review">
+      <div class="kpi-icon">⚠️</div>
+      <div class="kpi-body">
+        <div class="kpi-label">Under Review</div>
+        <div class="kpi-value" id="review-count">342</div>
+        <div class="kpi-delta delta-neutral">↔ 0.4% change</div>
+      </div>
+    </div>
+    <div class="kpi-card kpi-score">
+      <div class="kpi-icon">📊</div>
+      <div class="kpi-body">
+        <div class="kpi-label">Avg Risk Score</div>
+        <div class="kpi-value" id="avg-score">34</div>
+        <div class="kpi-delta delta-good">↓ 2.1 pts safer</div>
+      </div>
+    </div>
+  </div>
 
-    <div class="dash-card">
-      <div class="card-label">Fraud Blocked Today</div>
-      <div class="card-value danger" id="fraud-count">1,247</div>
-      <div class="card-delta delta-up">↑ 3.2% vs yesterday</div>
-      <div class="mini-chart" id="fraud-chart"></div>
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <!-- 24h Volume Chart -->
+    <div class="chart-card chart-wide">
+      <div class="chart-header">
+        <div class="chart-title">Transaction Volume — Last 24h</div>
+        <div class="chart-legend">
+          <span class="leg-item"><span class="leg-dot" style="background:#00e8a2"></span>Safe</span>
+          <span class="leg-item"><span class="leg-dot" style="background:#ff4d6d"></span>Fraud</span>
+          <span class="leg-item"><span class="leg-dot" style="background:#ffb830"></span>Review</span>
+        </div>
+      </div>
+      <div style="position:relative;height:220px;">
+        <canvas id="volumeChart" role="img" aria-label="24 hour transaction volume bar chart">Transaction volume over 24 hours showing safe, fraud, and review counts.</canvas>
+      </div>
     </div>
 
-    <div class="dash-card">
-      <div class="card-label">Safe Transactions</div>
-      <div class="card-value safe" id="safe-count">98,341</div>
-      <div class="card-delta delta-down">↑ 1.8% volume</div>
-      <div class="mini-chart" id="safe-chart"></div>
+    <!-- Verdict Donut -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Verdict Breakdown</div>
+      </div>
+      <div style="position:relative;height:200px;">
+        <canvas id="verdictChart" role="img" aria-label="Donut chart showing verdict breakdown">Verdict breakdown: 79% clear, 13% review, 8% blocked.</canvas>
+      </div>
+      <div class="donut-legend">
+        <div class="donut-leg-item"><span style="background:#00e8a2"></span>Clear 79%</div>
+        <div class="donut-leg-item"><span style="background:#ffb830"></span>Review 13%</div>
+        <div class="donut-leg-item"><span style="background:#ff4d6d"></span>Block 8%</div>
+      </div>
     </div>
+  </div>
 
-    <div class="dash-card tall">
-      <div class="card-label">Current Network Risk</div>
+  <!-- Live TX Feed + Gauge -->
+  <div class="dash-bottom-row">
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Current Network Risk</div>
+        <div class="gauge-sub-label" id="gauge-status">ELEVATED</div>
+      </div>
       <div class="gauge-wrap">
-        <svg class="gauge-arc" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M 20 100 A 80 80 0 0 1 180 100"
-                stroke="rgba(255,255,255,0.06)" stroke-width="14" stroke-linecap="round"/>
-          <path d="M 20 100 A 80 80 0 0 1 180 100"
-                stroke="url(#rg)" stroke-width="14" stroke-linecap="round"
+        <svg class="gauge-arc" viewBox="0 0 200 120" fill="none">
+          <path d="M 20 100 A 80 80 0 0 1 180 100" stroke="rgba(255,255,255,0.08)" stroke-width="14" stroke-linecap="round"/>
+          <path d="M 20 100 A 80 80 0 0 1 180 100" stroke="url(#rg)" stroke-width="14" stroke-linecap="round"
                 stroke-dasharray="251" stroke-dashoffset="80" id="gauge-path"
                 style="transition:stroke-dashoffset 1.5s cubic-bezier(0.34,1.56,0.64,1)"/>
           <defs>
             <linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stop-color="#00e8a2"/>
+              <stop offset="0%" stop-color="#00e8a2"/>
               <stop offset="100%" stop-color="#ff4d6d"/>
             </linearGradient>
           </defs>
         </svg>
-        <div class="gauge-label">68</div>
-        <div class="gauge-sub">/ 100 — ELEVATED</div>
+        <div class="gauge-label" id="gauge-score">68</div>
+        <div class="gauge-sub">/ 100</div>
+      </div>
+    </div>
+
+    <div class="chart-card chart-feed">
+      <div class="chart-header">
+        <div class="chart-title">Live Transaction Feed</div>
+        <div class="live-badge">● LIVE</div>
       </div>
       <div class="tx-feed" id="live-feed"></div>
     </div>
 
-    <div class="dash-card wide">
-      <div class="card-label">Transaction Volume — Last 24h</div>
-      <div class="mini-chart" id="volume-chart" style="height:80px"></div>
+    <!-- Risk Score Distribution -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Risk Score Distribution</div>
+      </div>
+      <div style="position:relative;height:180px;">
+        <canvas id="riskDistChart" role="img" aria-label="Risk score distribution histogram">Risk score distribution across 10 buckets from 0 to 100.</canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
+     ANALYTICS SECTION
+     ═══════════════════════════════════ -->
+<section class="section analytics-section" id="analytics-section">
+  <div class="section-label">Deep Analytics</div>
+  <h2 class="section-title">Fraud Intelligence &amp; Trends</h2>
+  <p class="section-sub">7-day trend analysis, country heatmap and device risk breakdown.</p>
+
+  <div class="analytics-grid">
+
+    <!-- 7-Day Trend Line Chart -->
+    <div class="chart-card chart-wide">
+      <div class="chart-header">
+        <div class="chart-title">7-Day Fraud Trend</div>
+        <div class="chart-legend">
+          <span class="leg-item"><span class="leg-dot" style="background:#ff4d6d"></span>Fraud</span>
+          <span class="leg-item"><span class="leg-dot" style="background:#00e8a2"></span>Safe</span>
+        </div>
+      </div>
+      <div style="position:relative;height:220px;">
+        <canvas id="trendChart" role="img" aria-label="7 day fraud trend line chart">7 day trend showing fraud and safe transaction counts.</canvas>
+      </div>
+    </div>
+
+    <!-- Device Risk Breakdown -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Device Risk Breakdown</div>
+      </div>
+      <div style="position:relative;height:200px;">
+        <canvas id="deviceChart" role="img" aria-label="Horizontal bar chart of device risk levels">Device risk breakdown by type.</canvas>
+      </div>
+    </div>
+
+    <!-- Country Risk Heatmap (Bar) -->
+    <div class="chart-card chart-wide">
+      <div class="chart-header">
+        <div class="chart-title">Top Countries by Fraud Volume</div>
+      </div>
+      <div style="position:relative;height:220px;">
+        <canvas id="countryChart" role="img" aria-label="Bar chart of top countries by fraud volume">Top countries with highest fraud transaction count.</canvas>
+      </div>
+    </div>
+
+    <!-- Transaction Type Breakdown -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">Fraud by Transaction Type</div>
+      </div>
+      <div style="position:relative;height:200px;">
+        <canvas id="txTypeChart" role="img" aria-label="Pie chart of fraud by transaction type">Fraud incidents broken down by transaction type.</canvas>
+      </div>
     </div>
 
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     FEATURES
-     ══════════════════════════════════════════ -->
-<section class="section features-section" id="features">
-  <div class="section-label">Capabilities</div>
-  <h2 class="section-title">Built for Every<br>Attack Vector</h2>
+<!-- ═══════════════════════════════════
+     TRANSACTION LOGS
+     ═══════════════════════════════════ -->
+<section class="section txn-logs-section" id="txn-logs-section">
+  <div class="section-label">Audit Trail</div>
+  <h2 class="section-title">Transaction Logs</h2>
+  <p class="section-sub">Full audit trail of every analyzed transaction with risk scores and signals.</p>
 
-  <div class="features-grid">
-
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">🧠</div>
-      <div class="feat-title">Ensemble ML Models</div>
-      <p class="feat-desc">XGBoost, LightGBM, and deep neural networks work in parallel — each model votes, a meta-learner decides.</p>
-      <div class="feat-cta">Try It →</div>
+  <!-- Filters -->
+  <div class="logs-filters">
+    <div class="filter-group">
+      <label class="filter-label">Verdict</label>
+      <select class="filter-select" id="filter-verdict" onchange="filterLogs()">
+        <option value="">All</option>
+        <option value="block">Blocked</option>
+        <option value="review">Review</option>
+        <option value="clear">Clear</option>
+      </select>
     </div>
-
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">⚡</div>
-      <div class="feat-title">Sub-100ms Scoring</div>
-      <p class="feat-desc">Redis-cached feature stores and vectorized inference pipelines deliver decisions before users notice latency.</p>
-      <div class="feat-cta">Try It →</div>
+    <div class="filter-group">
+      <label class="filter-label">Min Score</label>
+      <input class="filter-input" id="filter-score" type="number" placeholder="0–100" min="0" max="100" oninput="filterLogs()"/>
     </div>
-
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">🔍</div>
-      <div class="feat-title">Explainable AI (XAI)</div>
-      <p class="feat-desc">SHAP values and LIME explanations surface every signal — your compliance team will love the audit trail.</p>
-      <div class="feat-cta">Try It →</div>
+    <div class="filter-group">
+      <label class="filter-label">Search TXN ID</label>
+      <input class="filter-input" id="filter-search" type="text" placeholder="TXN-..." oninput="filterLogs()"/>
     </div>
+    <button class="filter-reset-btn" onclick="resetFilters()">Reset</button>
+    <div class="filter-count" id="filter-count">Showing all transactions</div>
+  </div>
 
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">🌐</div>
-      <div class="feat-title">Graph Neural Networks</div>
-      <p class="feat-desc">Map relationships between accounts, devices, and IPs to uncover fraud rings rule-based systems miss.</p>
-      <div class="feat-cta">Try It →</div>
-    </div>
+  <!-- Logs Table -->
+  <div class="logs-table-wrap">
+    <table class="logs-table" id="logs-table">
+      <thead>
+        <tr>
+          <th onclick="sortLogs('txnId')">TXN ID <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('amount')">Amount <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('transactionType')">Type <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('country')">Country <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('deviceRisk')">Device <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('riskScore')">Score <span class="sort-icon">↕</span></th>
+          <th onclick="sortLogs('verdict')">Verdict <span class="sort-icon">↕</span></th>
+          <th>Signals</th>
+          <th onclick="sortLogs('createdAt')">Time <span class="sort-icon">↕</span></th>
+        </tr>
+      </thead>
+      <tbody id="logs-tbody">
+        <tr><td colspan="9" class="logs-loading">⏳ Loading transaction logs…</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">🔄</div>
-      <div class="feat-title">Adaptive Learning</div>
-      <p class="feat-desc">Continuous online learning with concept drift detection automatically adjusts models as fraud patterns evolve.</p>
-      <div class="feat-cta">Try It →</div>
-    </div>
-
-    <div class="feat-card" onclick="scrollToAnalyzer()">
-      <div class="feat-icon">🛡️</div>
-      <div class="feat-title">Zero-Day Defense</div>
-      <p class="feat-desc">Anomaly detection with autoencoders catches novel attack patterns never seen in training data.</p>
-      <div class="feat-cta">Try It →</div>
-    </div>
-
+  <!-- Pagination -->
+  <div class="logs-pagination">
+    <button class="page-btn" id="page-prev" onclick="changePage(-1)" disabled>← Prev</button>
+    <span class="page-info" id="page-info">Page 1 of 1</span>
+    <button class="page-btn" id="page-next" onclick="changePage(1)" disabled>Next →</button>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     ML PIPELINE
-     ══════════════════════════════════════════ -->
-<section class="pipeline-section" id="pipeline">
-  <div class="section-label">Architecture</div>
-  <h2 class="section-title">How Our ML<br>Pipeline Works</h2>
-
-  <div class="pipeline-wrap">
-    <div class="pipeline-track">
-
-      <div class="pipe-step">
-        <div class="pipe-num">01</div>
-        <div class="pipe-icon">📥</div>
-        <div class="pipe-title">Ingest</div>
-        <p class="pipe-desc">Transaction event streams via Kafka. 340M+ events/day with sub-5ms p99 latency.</p>
-      </div>
-
-      <div class="pipe-step">
-        <div class="pipe-num">02</div>
-        <div class="pipe-icon">⚙️</div>
-        <div class="pipe-title">Feature Eng.</div>
-        <p class="pipe-desc">200+ real-time features: velocity, geo-distance, device fingerprint, behavioural biometrics.</p>
-      </div>
-
-      <div class="pipe-step">
-        <div class="pipe-num">03</div>
-        <div class="pipe-icon">🧬</div>
-        <div class="pipe-title">Scoring</div>
-        <p class="pipe-desc">7-model ensemble with gradient boosting, LSTM sequences, and GNN embeddings in parallel.</p>
-      </div>
-
-      <div class="pipe-step">
-        <div class="pipe-num">04</div>
-        <div class="pipe-icon">🏛️</div>
-        <div class="pipe-title">Meta-Learner</div>
-        <p class="pipe-desc">Stacked generalisation combines model outputs into a single calibrated risk probability.</p>
-      </div>
-
-      <div class="pipe-step">
-        <div class="pipe-num">05</div>
-        <div class="pipe-icon">⚖️</div>
-        <div class="pipe-title">Decision</div>
-        <p class="pipe-desc">Block / Review / Allow with configurable thresholds. Full SHAP explanation per decision.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
+<!-- ═══════════════════════════════════
      INTERACTIVE ANALYZER
-     ══════════════════════════════════════════ -->
+     ═══════════════════════════════════ -->
 <section class="analyzer-section" id="analyzer-section">
   <div class="section-label">Try It Live</div>
-  <h2 class="section-title">Analyze a<br>Transaction</h2>
-  <p class="section-sub">
-    Enter transaction details and watch the ML engine evaluate risk in real time.
-    Powered by live backend API.
-  </p>
+  <h2 class="section-title">Analyze a Transaction</h2>
+  <p class="section-sub">Enter details and watch the ML engine evaluate risk in real time. Powered by live backend API.</p>
 
   <div class="analyzer-wrap">
-
-    <!-- Input Panel -->
     <div class="input-panel">
-      <div class="panel-title">
-        <div class="panel-title-dot"></div> Transaction Input
-      </div>
+      <div class="panel-title"><div class="panel-title-dot"></div>Transaction Input</div>
 
       <div class="field-row">
         <div class="field-group">
           <div class="field-label">Amount (₹)</div>
-          <input class="field-input" id="tx-amount" type="number"
-                 placeholder="e.g. 485000" />
+          <input class="field-input" id="tx-amount" type="number" placeholder="e.g. 485000"/>
         </div>
         <div class="field-group">
           <div class="field-label">Transaction Type</div>
@@ -317,8 +355,7 @@
         </div>
         <div class="field-group">
           <div class="field-label">Hour of Day (0–23)</div>
-          <input class="field-input" id="tx-hour" type="number"
-                 min="0" max="23" placeholder="e.g. 14" />
+          <input class="field-input" id="tx-hour" type="number" min="0" max="23" placeholder="e.g. 14"/>
         </div>
       </div>
 
@@ -334,116 +371,116 @@
 
       <div class="field-group">
         <div class="field-label">Velocity — Transactions Last Hour</div>
-        <input class="field-input" id="tx-velocity" type="number"
-               placeholder="e.g. 3" min="0" />
+        <input class="field-input" id="tx-velocity" type="number" placeholder="e.g. 3" min="0"/>
       </div>
 
-      <button class="analyze-btn" onclick="analyzeTransaction()">
-        ⚡ Run Fraud Analysis
-      </button>
+      <button class="analyze-btn" onclick="analyzeTransaction()">⚡ Run Fraud Analysis</button>
 
       <div class="quick-scenarios">
         <p class="qs-label">Quick scenarios:</p>
         <div class="qs-btns">
           <button class="qs-btn qs-high"   onclick="runDemoScenario('high')">HIGH RISK</button>
-          <button class="qs-btn qs-medium" onclick="runDemoScenario('medium')">MEDIUM RISK</button>
+          <button class="qs-btn qs-medium" onclick="runDemoScenario('medium')">MEDIUM</button>
           <button class="qs-btn qs-low"    onclick="runDemoScenario('low')">LOW RISK</button>
         </div>
       </div>
     </div>
 
-    <!-- Output Panel -->
     <div class="output-panel">
-      <div class="panel-title">
-        <div class="panel-title-dot" style="background:var(--accent2)"></div>
-        Risk Assessment
-      </div>
+      <div class="panel-title"><div class="panel-title-dot" style="background:var(--accent2)"></div>Risk Assessment</div>
 
       <div class="result-idle" id="result-idle">
         <div class="result-idle-icon">🔬</div>
-        <div>Fill in transaction details<br>and run analysis</div>
-        <button class="try-demo-btn" onclick="runDemoScenario('high')">
-          Try a demo →
-        </button>
+        <div>Fill in details and run analysis</div>
+        <button class="try-demo-btn" onclick="runDemoScenario('high')">Try a demo →</button>
       </div>
 
       <div class="result-display" id="result-display">
         <div class="risk-score-big" id="risk-score-display">—</div>
         <div class="risk-label">RISK SCORE (0–100)</div>
-        <div class="risk-bar-track">
-          <div class="risk-bar-fill" id="risk-bar"></div>
-        </div>
-        <div id="risk-verdict"
-             style="font-family:'Syne',sans-serif;font-weight:800;
-                    font-size:1rem;margin-bottom:20px;"></div>
+        <div class="risk-bar-track"><div class="risk-bar-fill" id="risk-bar"></div></div>
+        <div id="risk-verdict" style="font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;margin-bottom:20px;"></div>
+
+        <!-- Mini score chart after analysis -->
+        <div class="score-breakdown" id="score-breakdown"></div>
+
         <ul class="signals-list" id="signals-list"></ul>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     TESTIMONIALS
-     ══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════
+     FEATURES
+     ═══════════════════════════════════ -->
+<section class="section features-section" id="features">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Built for Every Attack Vector</h2>
+  <div class="features-grid">
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">🧠</div>
+      <div class="feat-title">Ensemble ML Models</div>
+      <p class="feat-desc">XGBoost, LightGBM, and deep neural networks work in parallel — each model votes, a meta-learner decides.</p>
+      <div class="feat-cta">Try It →</div>
+    </div>
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">⚡</div>
+      <div class="feat-title">Sub-100ms Scoring</div>
+      <p class="feat-desc">Redis-cached feature stores and vectorized inference deliver decisions before users notice latency.</p>
+      <div class="feat-cta">Try It →</div>
+    </div>
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">🔍</div>
+      <div class="feat-title">Explainable AI (XAI)</div>
+      <p class="feat-desc">SHAP values and LIME explanations surface every signal — full audit trail for compliance teams.</p>
+      <div class="feat-cta">Try It →</div>
+    </div>
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">Live Transaction Logs</div>
+      <p class="feat-desc">Full searchable audit trail of every transaction — filter by verdict, score, country, and more.</p>
+      <div class="feat-cta">View Logs →</div>
+    </div>
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">📈</div>
+      <div class="feat-title">Deep Analytics</div>
+      <p class="feat-desc">7-day trend charts, country risk heatmaps, device breakdown — all powered by real backend data.</p>
+      <div class="feat-cta">View Analytics →</div>
+    </div>
+    <div class="feat-card" onclick="scrollToAnalyzer()">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">Zero-Day Defense</div>
+      <p class="feat-desc">Anomaly detection with autoencoders catches novel attack patterns never seen in training data.</p>
+      <div class="feat-cta">Try It →</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section class="testimonials" id="testimonials">
   <div class="section-label">Social Proof</div>
-  <h2 class="section-title">Trusted by Risk Teams<br>Worldwide</h2>
-
+  <h2 class="section-title">Trusted by Risk Teams Worldwide</h2>
   <div class="testi-grid">
     <div class="testi-card">
-      <div class="testi-quote">
-        BackHackers AI cut our false positive rate by 62% in the first month.
-        Our customers stopped getting their cards declined for legitimate purchases.
-      </div>
-      <div class="testi-author">
-        <div class="author-avatar">SR</div>
-        <div>
-          <div class="author-name">Sarah Reynolds</div>
-          <div class="author-role">VP Risk, Meridian Bank</div>
-        </div>
-      </div>
+      <div class="testi-quote">BackHackers AI cut our false positive rate by 62% in the first month. Our customers stopped getting cards declined for legitimate purchases.</div>
+      <div class="testi-author"><div class="author-avatar">SR</div><div><div class="author-name">Sarah Reynolds</div><div class="author-role">VP Risk, Meridian Bank</div></div></div>
     </div>
-
     <div class="testi-card">
-      <div class="testi-quote">
-        The graph neural network feature uncovered a fraud ring we'd been missing
-        for 8 months. The ROI was immediate and staggering.
-      </div>
-      <div class="testi-author">
-        <div class="author-avatar">KP</div>
-        <div>
-          <div class="author-name">Karan Patel</div>
-          <div class="author-role">Head of Fraud, FinFlux</div>
-        </div>
-      </div>
+      <div class="testi-quote">The graph neural network feature uncovered a fraud ring we'd been missing for 8 months. The ROI was immediate and staggering.</div>
+      <div class="testi-author"><div class="author-avatar">KP</div><div><div class="author-name">Karan Patel</div><div class="author-role">Head of Fraud, FinFlux</div></div></div>
     </div>
-
     <div class="testi-card">
-      <div class="testi-quote">
-        The explainability reports are exactly what our regulators asked for.
-        We can justify every single block decision with a clear audit trail.
-      </div>
-      <div class="testi-author">
-        <div class="author-avatar">AT</div>
-        <div>
-          <div class="author-name">Ananya Tiwari</div>
-          <div class="author-role">Compliance Director, PaySecure India</div>
-        </div>
-      </div>
+      <div class="testi-quote">The explainability reports are exactly what our regulators asked for. We can justify every block decision with a clear audit trail.</div>
+      <div class="testi-author"><div class="author-avatar">AT</div><div><div class="author-name">Ananya Tiwari</div><div class="author-role">Compliance Director, PaySecure India</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PRICING
-     ══════════════════════════════════════════ -->
+<!-- PRICING -->
 <section class="pricing" id="pricing">
   <div class="section-label">Pricing</div>
-  <h2 class="section-title">Transparent,<br>Usage-Based Pricing</h2>
-
+  <h2 class="section-title">Transparent, Usage-Based Pricing</h2>
   <div class="pricing-grid">
-
     <div class="price-card">
       <div class="price-tier">Starter</div>
       <div class="price-amt">₹41,500</div>
@@ -451,15 +488,12 @@
       <ul class="price-features">
         <li class="pf-item">Core XGBoost + LightGBM models</li>
         <li class="pf-item">Real-time scoring API</li>
-        <li class="pf-item">Basic dashboard</li>
+        <li class="pf-item">Transaction Logs (30 days)</li>
+        <li class="pf-item">Basic analytics dashboard</li>
         <li class="pf-item">Email alerts</li>
-        <li class="pf-item">Community support</li>
       </ul>
-      <button class="price-btn outline" onclick="showContactModal('Starter')">
-        Get Started
-      </button>
+      <button class="price-btn outline" onclick="showContactModal('Starter')">Get Started</button>
     </div>
-
     <div class="price-card featured">
       <div class="featured-badge">POPULAR</div>
       <div class="price-tier">Growth</div>
@@ -468,16 +502,13 @@
       <ul class="price-features">
         <li class="pf-item">Full 7-model ensemble</li>
         <li class="pf-item">Graph Neural Network module</li>
+        <li class="pf-item">Transaction Logs (90 days)</li>
+        <li class="pf-item">Deep analytics + trend charts</li>
         <li class="pf-item">SHAP explainability reports</li>
-        <li class="pf-item">Adaptive learning</li>
-        <li class="pf-item">Slack + webhook alerts</li>
         <li class="pf-item">Priority support</li>
       </ul>
-      <button class="price-btn solid" onclick="showTrialModal()">
-        Start Free Trial
-      </button>
+      <button class="price-btn solid" onclick="showTrialModal()">Start Free Trial</button>
     </div>
-
     <div class="price-card">
       <div class="price-tier">Enterprise</div>
       <div class="price-amt">Custom</div>
@@ -485,102 +516,63 @@
       <ul class="price-features">
         <li class="pf-item">Custom model fine-tuning</li>
         <li class="pf-item">On-premise deployment</li>
+        <li class="pf-item">Unlimited transaction logs</li>
         <li class="pf-item">SLA &lt;80ms p99</li>
-        <li class="pf-item">Dedicated ML engineer</li>
         <li class="pf-item">SOC 2 Type II + PCI DSS</li>
-        <li class="pf-item">24/7 support</li>
+        <li class="pf-item">24/7 dedicated support</li>
       </ul>
-      <button class="price-btn outline" onclick="showContactModal('Enterprise')">
-        Contact Sales
-      </button>
+      <button class="price-btn outline" onclick="showContactModal('Enterprise')">Contact Sales</button>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-     ══════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-brand">
     <div class="footer-logo">BackHackers AI</div>
-    <p class="footer-desc">
-      Real-time fraud detection powered by ensemble machine learning.
-      Protecting ₹240Cr+ in transactions daily.
-    </p>
+    <p class="footer-desc">Real-time fraud detection powered by ensemble machine learning. Protecting ₹240Cr+ in transactions daily.</p>
     <div class="footer-social">
-      <a href="https://github.com/AmanTanwar007/BackHackers_AI"
-         target="_blank" rel="noopener" class="social-link">GitHub</a>
-      <a href="https://back-hackers-ai.vercel.app/api/health"
-         target="_blank" rel="noopener" class="social-link">API Status</a>
+      <a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank" rel="noopener" class="social-link">GitHub</a>
+      <a href="https://back-hackers-ai.vercel.app/api/health" target="_blank" rel="noopener" class="social-link">API Status</a>
     </div>
   </div>
-
   <div class="footer-col">
     <h4>Platform</h4>
     <ul>
-      <li><a href="#analyzer-section" onclick="scrollToAnalyzer();return false;">Fraud Detection</a></li>
-      <li><a href="#analyzer-section" onclick="scrollToAnalyzer();return false;">Risk Scoring</a></li>
-      <li><a href="#features"         onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'});return false;">Graph Analytics</a></li>
-      <li><a href="#analyzer-section" onclick="scrollToAnalyzer();return false;">XAI Reports</a></li>
+      <li><a href="#dashboard-section">Live Dashboard</a></li>
+      <li><a href="#analytics-section">Analytics</a></li>
+      <li><a href="#txn-logs-section">Transaction Logs</a></li>
+      <li><a href="#analyzer-section">Risk Analyzer</a></li>
     </ul>
   </div>
-
   <div class="footer-col">
     <h4>Developers</h4>
     <ul>
-      <li>
-        <a href="https://back-hackers-ai.vercel.app/api/health"
-           target="_blank" rel="noopener">API Reference</a>
-      </li>
-      <li>
-        <a href="https://github.com/AmanTanwar007/BackHackers_AI"
-           target="_blank" rel="noopener">GitHub Repo</a>
-      </li>
-      <li>
-        <a href="#" onclick="showSuccessToast('📘 Webhook docs coming soon!');return false;">Webhooks</a>
-      </li>
-      <li>
-        <a href="https://back-hackers-ai.vercel.app/api/health"
-           target="_blank" rel="noopener">Status Page</a>
-      </li>
+      <li><a href="https://back-hackers-ai.vercel.app/api/health" target="_blank">API Reference</a></li>
+      <li><a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank">GitHub Repo</a></li>
+      <li><a href="#" onclick="showSuccessToast('📘 Webhook docs coming soon!');return false;">Webhooks</a></li>
+      <li><a href="https://back-hackers-ai.vercel.app/api/health" target="_blank">Status Page</a></li>
     </ul>
   </div>
-
   <div class="footer-col">
     <h4>Company</h4>
     <ul>
-      <li>
-        <a href="https://github.com/AmanTanwar007"
-           target="_blank" rel="noopener">About</a>
-      </li>
-      <li>
-        <a href="https://github.com/AmanTanwar007/BackHackers_AI"
-           target="_blank" rel="noopener">GitHub</a>
-      </li>
-      <li>
-        <a href="#" onclick="showContactModal('Enterprise');return false;">Careers</a>
-      </li>
-      <li>
-        <a href="#" onclick="showSuccessToast('🔒 Security page coming soon!');return false;">Security</a>
-      </li>
+      <li><a href="https://github.com/AmanTanwar007" target="_blank">About</a></li>
+      <li><a href="https://github.com/AmanTanwar007/BackHackers_AI" target="_blank">GitHub</a></li>
+      <li><a href="#" onclick="showContactModal('Enterprise');return false;">Careers</a></li>
+      <li><a href="#" onclick="showSuccessToast('🔒 Security page coming soon!');return false;">Security</a></li>
     </ul>
   </div>
 </footer>
-
 <div class="footer-bottom">
   <span>© 2026 BackHackers AI — Aman Tanwar. All rights reserved.</span>
   <span class="footer-legal">
-    <a href="#" onclick="showSuccessToast('📄 Privacy policy coming soon!');return false;">Privacy</a>
-    ·
-    <a href="#" onclick="showSuccessToast('📄 Terms coming soon!');return false;">Terms</a>
-    ·
+    <a href="#" onclick="showSuccessToast('📄 Privacy coming soon!');return false;">Privacy</a> ·
+    <a href="#" onclick="showSuccessToast('📄 Terms coming soon!');return false;">Terms</a> ·
     <a href="#" onclick="showSuccessToast('🍪 Cookie policy coming soon!');return false;">Cookies</a>
   </span>
 </div>
 
-<!-- ── Script ── -->
 <script src="api-client.js"></script>
-
 </body>
 </html>
