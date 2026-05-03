@@ -1,24 +1,22 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "backend/src/server.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "frontend/$1"
-    }
+  "builds": [
+    { "src": "backend/src/server.js", "use": "@vercel/node" },
+    { "src": "frontend/**", "use": "@vercel/static" }
   ],
-  "headers": [
+  "routes": [
     {
-      "source": "/api/(.*)",
-      "headers": [
-        { "key": "Access-Control-Allow-Credentials", "value": "true" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-        { "key": "Access-Control-Allow-Headers", "value": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization" }
-      ]
-    }
+      "src": "/api/(.*)",
+      "dest": "backend/src/server.js",
+      "headers": {
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,OPTIONS,PATCH,DELETE,POST,PUT",
+        "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization"
+      }
+    },
+    { "src": "/frontend/(.*)", "dest": "frontend/$1" },
+    { "src": "/(.*\\.(js|css|html|png|jpg|ico|svg|woff|woff2|ttf))", "dest": "frontend/$1" },
+    { "src": "/(.*)", "dest": "frontend/index.html" }
   ]
 }
