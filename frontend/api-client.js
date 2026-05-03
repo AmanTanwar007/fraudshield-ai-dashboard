@@ -8,8 +8,8 @@
 const BACKEND_URL = (() => {
   const h = window.location.hostname;
   if (h === 'localhost' || h === '127.0.0.1') return 'http://localhost:5000';
-  // Same-domain deployment — API is served from /api/* on same origin
-  return '';
+  // Use the current origin to ensure requests go to the Vercel-hosted backend
+  return window.location.origin;
 })();
 
 /* ── INR FORMATTER ───────────────────────────────────────── */

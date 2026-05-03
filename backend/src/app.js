@@ -26,22 +26,27 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
 app.use(
   cors({
     origin: function (origin, callback) {
+      // 1. Allow requests with no origin (like mobile apps, curl, or server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.length === 0) return callback(null, true);
-      if (allowedOrigins.includes(origin)) return callback(null, true);
 
+      // 2. Check if origin is in your explicit ALLOWED_ORIGINS whitelist
+      const isWhitelisted = allowedOrigins.includes(origin);
+
+      // 3. Check if origin is a Vercel subdomain (covers all preview & production URLs)
+      const isVercel = origin.endsWith('.vercel.app');
+
+      // 4. Allow if it's whitelisted, a Vercel URL, or if no whitelist is set (for testing)
+      if (isWhitelisted || isVercel || allowedOrigins.length === 0) {
+        return callback(null, true);
+      }
+
+      // If it fails all checks, block it
+      console.error(`CORS Blocked: ${origin}`); // Helpful for debugging in Vercel logs
       callback(new Error('Not allowed by CORS'));
     },
     credentials: true,
-  })
-);
-
-app.use(
-  rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 200,
-    standardHeaders: true,
-    legacyHeaders: false,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
   })
 );
 
