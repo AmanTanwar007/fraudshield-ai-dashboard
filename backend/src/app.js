@@ -16,40 +16,35 @@ const app = express();
 /* ─────────────────────────────────────────────
    Security
 ───────────────────────────────────────────── */
-app.use(helmet());
-
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .split(',')
   .map((o) => o.trim())
   .filter(Boolean);
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // 1. Allow requests with no origin (like mobile apps, curl, or server-to-server)
-      if (!origin) return callback(null, true);
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Requests without origin (Postman/mobile/server)
+    if (!origin) return callback(null, true);
 
-      // 2. Check if origin is in your explicit ALLOWED_ORIGINS whitelist
-      const isWhitelisted = allowedOrigins.includes(origin);
+    const isWhitelisted = allowedOrigins.includes(origin);
+    const isVercel = origin.includes('.vercel.app');
 
-      // 3. Check if origin is a Vercel subdomain (covers all preview & production URLs)
-      const isVercel = origin.endsWith('.vercel.app');
+    if (isWhitelisted || isVercel || allowedOrigins.length === 0) {
+      return callback(null, true);
+    }
 
-      // 4. Allow if it's whitelisted, a Vercel URL, or if no whitelist is set (for testing)
-      if (isWhitelisted || isVercel || allowedOrigins.length === 0) {
-        return callback(null, true);
-      }
+    console.log('Blocked by CORS:', origin);
 
-      // If it fails all checks, block it
-      console.error(`CORS Blocked: ${origin}`); // Helpful for debugging in Vercel logs
-      callback(new Error('Not allowed by CORS'));
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  })
-);
+    // Do NOT throw error, just deny silently
+    return callback(null, false);
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
 
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 /* ─────────────────────────────────────────────
    General
 ───────────────────────────────────────────── */
